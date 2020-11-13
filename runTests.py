@@ -5,7 +5,7 @@ import platform
 
 def run_flutter_tests(path, test_file='widget_test.dart'):
     if path == '' or path is None:
-        path = r'D:\work_src\Medium Coders Asylum\Foddie\project-Foodie\project_foodie'
+        path = r'D:\work_src\test\flutter test\cli_test_app'
 
     os.chdir(path)
     flutter_test = os.popen(r'flutter test test/{}'.format(test_file))
@@ -17,4 +17,4 @@ if __name__ == '__main__':
 
     if checkPlatform == 'Windows':
         print(checkPlatform)
-        run_flutter_tests(r'D:\work_src\Medium Coders Asylum\Foddie\project-Foodie\project_foodie')
+        run_flutter_tests(r'D:\work_src\test\flutter test\cli_test_app')

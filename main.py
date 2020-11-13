@@ -3,7 +3,6 @@ import platform
 import subprocess
 import re
 
-import startEmulator
 from runTests import run_flutter_tests
 
 checkPlatform = platform.system()
