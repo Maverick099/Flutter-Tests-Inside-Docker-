@@ -3,7 +3,7 @@ import platform
 import subprocess
 import re
 
-from runTests import run_flutter_tests
+import scripts.runTests
 
 checkPlatform = platform.system()
 print(checkPlatform)
