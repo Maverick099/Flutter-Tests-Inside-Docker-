@@ -4,7 +4,6 @@ import subprocess
 import re
 
 import scripts.runTests
-
 checkPlatform = platform.system()
 print(checkPlatform)
 cmd = ''
@@ -23,6 +22,6 @@ else:
     print('[!] Flutter not installed.....')
 
 #startEmulator.launch_emulator_win()
-scripts.run_flutter_tests(r'D:\work_src\test\flutter test\cli_test_app')
+scripts.runTests.run_flutter_tests_win(r'D:\work_src\test\flutter test\cli_test_app')
 # ToDo: Create a function to download flutter sdk if not found
 # ToDo: create a function to download android sdk if not found
