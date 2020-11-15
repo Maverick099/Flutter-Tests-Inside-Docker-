@@ -18,12 +18,15 @@ def run_flutter_tests_win(path=r'home/tester/repo', test_file=None, debug=False)
         test_file = ['widget_test.dart']
 
     os.chdir(path)
+    if debug:
+        print('[D] Directory Changed to: {}'.format(path))
+        print('[D] Number of test files: {}'.format(len(test_file)))
     for file in test_file:
-        flutter_test = os.popen(r'flutter test test/{}'.format(file))
+        flutter_test = os.popen(r'flutter test test\{}'.format(file))
         if debug:
-            print('Running Flutter Test from testFile : {} \n{}'.format(test_file, flutter_test.read()))
+            print('[D] Running Flutter Test from testFile : {} \n{}'.format(file, flutter_test.read()))
         else:
-            print('Running Flutter Test: \n{}'.format(test_file, flutter_test.read()))
+            print('Running Flutter Test: \n{}'.format(flutter_test.read()))
 
 
 def run_flutter_tests_linux(path=r'home/tester/repo', test_file=None, debug=False):
@@ -41,22 +44,23 @@ def run_flutter_tests_linux(path=r'home/tester/repo', test_file=None, debug=Fals
     change_dir = subprocess.Popen(['cd', '{}'.format(path)])
     if debug:
         print(change_dir.communicate())
+        print('[D] Number of test files: {}'.format(len(test_file)))
 
     for file in test_file:
-        flutter_test = subprocess.Popen(['flutter', 'test', 'test/{}'.format(file)])
+        flutter_test = subprocess.Popen(['flutter', 'test', r'test\{}'.format(file)])
         if debug:
-            print('Running Flutter Test from testFile : {} \n{}'.format(test_file, flutter_test.communicate()))
+            print('[D] Running Flutter Test from testFile : {} \n{}'.format(file, flutter_test.communicate()))
         else:
-            print('Running Flutter Test: \n{}'.format(test_file, flutter_test.communicate()))
+            print('Running Flutter Test: \n{}'.format(flutter_test.communicate()))
 
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.parse_args()
+
     parser.add_argument(
         "-p", "--path",
-        help='Add the file path here, only if test folder is located other than repo/test/',
+        help='Add the file path here, only if test folder is located other than repo/',
         type=str,
         default=r'home/tester/repo',
     )
@@ -65,19 +69,20 @@ if __name__ == '__main__':
         help='Add the test file name/s with .dart extension for running test, if name is other than `widget_test.dart`',
         type=str,
         nargs='+',
-        default='widget_test.dart',
+        default=['widget_test.dart'],
     )
     parser.add_argument(
         "-d", "--debug",
         help='Turn on Debugging mode',
         action='store_true'
     )
+    parser.parse_args()
     args = parser.parse_args()
 
     checkPlatform = platform.system()
     if args.debug:
         print('Platform: {}'.format(checkPlatform))
-        print('Test File Path:{}/test\n'.format(args.path))
+        print(r'Test File Path:{}\test'.format(args.path))
 
     if checkPlatform == 'Windows':
         run_flutter_tests_win(path=args.path, test_file=args.file, debug=args.debug)
