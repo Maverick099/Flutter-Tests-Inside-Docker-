@@ -1,6 +1,13 @@
-repo 🚨:
-  - ./*
-  
+
+Docker Scripts 🛠:
+  - docker_scripts/*
+ 
+scripts 📄:
+  - scripts/*
+ 
+DockerFile 🐋:
+  - Dockerfile
+
 Circle CI:
   - .circleci/*
   - .circleci/**/*
