@@ -72,6 +72,6 @@ if __name__ == '__main__':
 
         scripts.runTests.run_flutter_tests_linux(
             path=args.path,
-            test_file=args.file, 
+            test_file=args.file,
             debug=args.debug
         )
