@@ -4,15 +4,16 @@ import subprocess
 import re
 
 import scripts.runTests
+
 checkPlatform = platform.system()
 print(checkPlatform)
-cmd = ''
+CMD = ''
 if checkPlatform == 'Windows':
-    cmd = os.popen('flutter doctor')
+    CMD = os.popen('flutter doctor')
 else:
     subprocess.run(['flutter', 'doctor'])
 
-line = cmd.read().splitlines()
+line = CMD.read().splitlines()
 version = re.findall(r'\d+.\d+.\d+', line[1])
 splitLine = re.split(r'\W+', line[1])
 
@@ -21,7 +22,7 @@ if splitLine[1] == 'âˆš':
 else:
     print('[!] Flutter not installed.....')
 
-#startEmulator.launch_emulator_win()
+# startEmulator.launch_emulator_win()
 scripts.runTests.run_flutter_tests_win(r'D:\work_src\test\flutter test\cli_test_app')
 # ToDo: Create a function to download flutter sdk if not found
 # ToDo: create a function to download android sdk if not found
