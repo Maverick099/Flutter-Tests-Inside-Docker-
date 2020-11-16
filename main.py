@@ -1,3 +1,6 @@
+"""
+ This is the script will run the tests
+"""
 import os
 import platform
 import subprocess
@@ -17,7 +20,8 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         "-f", "--file",
-        help='Add the test file name/s with .dart extension for running test, if name is other than `widget_test.dart`',
+        help='''Add the test file name/s with .dart extension for running test,
+             if name is other than `widget_test.dart`''',
         type=str,
         nargs='+',
         default=['widget_test.dart'],
@@ -48,7 +52,11 @@ if __name__ == '__main__':
         if args.emulator:
             scripts.startEmulator.launch_emulator_win()
 
-        scripts.runTests.run_flutter_tests_win(path=args.path, test_file=args.file, debug=args.debug)
+        scripts.runTests.run_flutter_tests_win(
+            path=args.path,
+            test_file=args.file,
+            debug=args.debug
+        )
 
     else:
         p = subprocess.Popen(['flutter', 'doctor'])
