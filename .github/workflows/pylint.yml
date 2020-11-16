@@ -22,13 +22,13 @@ jobs:
       if: success()||failure()
     - name: Analysing scripts folder code with pylint
       run: |
-        cd /scripts
+        cd scripts
         pylint `ls -R|grep .py$|xargs`
       if: success()||failure()
     - name:  Analysing docker scripts folder code with pylint  
       run: |
         cd ..
-        cd /docker_scripts
+        cd docker_scripts
         pylint `ls -R|grep .py$|xargs`
      
            
