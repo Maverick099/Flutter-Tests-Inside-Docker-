@@ -70,4 +70,8 @@ if __name__ == '__main__':
         if args.emulator:
             scripts.startEmulator.launch_emulator_linux()
 
-        scripts.runTests.run_flutter_tests_linux(path=args.path, test_file=args.file, debug=args.debug)
+        scripts.runTests.run_flutter_tests_linux(
+            path=args.path,
+            test_file=args.file, 
+            debug=args.debug
+        )
