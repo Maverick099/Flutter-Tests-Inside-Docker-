@@ -1,4 +1,4 @@
-name: Pylint
+name: Pylint - Bhide Bhai
 
 on: [pull_request]
 
