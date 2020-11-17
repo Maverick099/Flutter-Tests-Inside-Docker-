@@ -69,7 +69,8 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         "-f", "--file",
-        help='Add the test file name/s with .dart extension for running test, if name is other than `widget_test.dart`',
+        help='''Add the test file name/s with .dart extension for running test, 
+        if name is other than `widget_test.dart`''',
         type=str,
         nargs='+',
         default=['widget_test.dart'],
@@ -88,6 +89,14 @@ if __name__ == '__main__':
         print(r'Test File Path:{}\test'.format(args.path))
 
     if checkPlatform == 'Windows':
-        run_flutter_tests_win(path=args.path, test_file=args.file, debug=args.debug)
+        run_flutter_tests_win(
+            path=args.path,
+            test_file=args.file,
+            debug=args.debug
+        )
     else:
-        run_flutter_tests_linux(path=args.path, test_file=args.file, debug=args.debug)
+        run_flutter_tests_linux(
+            path=args.path,
+            test_file=args.file,
+            debug=args.debug
+        )
