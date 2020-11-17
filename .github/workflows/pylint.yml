@@ -23,14 +23,14 @@ jobs:
     - run: cd scripts
     - name: Analysing scripts folder code with pylint
       run: |
-        pylint `ls -R|grep .py$|xargs`
+        pylint `.py$|xargs`
       if: success()||failure()
     - run: |
         cd ..
         cd docker_scripts
     - name:  Analysing docker scripts folder code with pylint  
       run: |
-        pylint `ls -R|grep .py$|xargs`
+        pylint `.py$|xargs`
      
            
       
