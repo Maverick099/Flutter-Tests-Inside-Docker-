@@ -27,7 +27,8 @@ def run_flutter_tests_win(path=r'home/tester/repo', test_file=None, debug=False)
     for file in test_file:
         flutter_test = os.popen(r'flutter test test\{}'.format(file))
         if debug:
-            print('[D] Running Flutter Test from testFile : {} \n{}'.format(file, flutter_test.read()))
+            print('[D] Running Flutter Test from testFile : {} \n{}'
+                  .format(file, flutter_test.read()))
         else:
             print('Running Flutter Test: \n{}'.format(flutter_test.read()))
 
