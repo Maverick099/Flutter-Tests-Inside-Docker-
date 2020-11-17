@@ -18,19 +18,19 @@ jobs:
         python -m pip install --upgrade pip
         pip install pylint
     - name: Analysing main.py code with pylint
-      run: pylint main.py
+      run: pylint --max-line-length=125 main.py 
       if: success()||failure()
     - run: cd scripts
     - name: Analysing scripts folder code with pylint
       run: |
-        find . -type f -not -path "./.venv/*" -name '*.py' | xargs pylint
+        find . -type f -name '*.py' | xargs pylint --max-line-length=125
       if: success()||failure()
     - run: |
         cd ..
         cd docker_scripts
     - name:  Analysing docker scripts folder code with pylint  
       run: |
-       find . -type f -not -path "./.venv/*" -name '*.py' | xargs pylint
+       find . -type f -name '*.py' | xargs pylint --max-line-length=125
      
            
       
