@@ -6,7 +6,7 @@ RUN useradd -ms /bin/bash test
 USER tester
 WORKDIR /home/tester
 
-# this floder will contain all the python scripts
+# this folder will contain all the python scripts
 RUN mkdir -p bin
 ADD . /home/tester/bin
 ENV PATH "$PATH:/home/tester/bin"
