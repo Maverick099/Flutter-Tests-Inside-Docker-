@@ -14,6 +14,8 @@ ENV PATH "$PATH:/home/tester/bin"
 #  this folder will contain all the flutter application files from the repo
 RUN mkdir -p repo
 ENV PATH "$PATH:/home/tester/repo"
+ENV PATH "$PATH:/home/tester/repo/scripts"
+ENV PATH "$PATH:/home/tester/repo/docker_scripts"
 
 #Flutter SDK
 RUN git clone https://github.com/flutter/flutter.git -b stable --depth 1
@@ -34,12 +36,3 @@ RUN cd Android/sdk/tools/bin && ./sdkmanager "build-tools;29.0.2" "patcher;v4" "
 ENV PATH "$PATH:/home/tester/Android/sdk/platform-tools"
 ENV PATH "$PATH:/home/tester/Android/sdk/tools/"
 ENV PATH "$PATH:/home/tester/Android/sdk/tools/avdmanager"
-
-
-
-
-
-
-
-
-
