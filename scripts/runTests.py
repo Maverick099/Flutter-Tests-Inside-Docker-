@@ -1,3 +1,6 @@
+"""
+This file is used for running test files
+"""
 import os
 import subprocess
 import platform
@@ -24,7 +27,8 @@ def run_flutter_tests_win(path=r'home/tester/repo', test_file=None, debug=False)
     for file in test_file:
         flutter_test = os.popen(r'flutter test test\{}'.format(file))
         if debug:
-            print('[D] Running Flutter Test from testFile : {} \n{}'.format(file, flutter_test.read()))
+            print('[D] Running Flutter Test from testFile : {} \n{}'
+                  .format(file, flutter_test.read()))
         else:
             print('Running Flutter Test: \n{}'.format(flutter_test.read()))
 
@@ -66,7 +70,8 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         "-f", "--file",
-        help='Add the test file name/s with .dart extension for running test, if name is other than `widget_test.dart`',
+        help='''Add the test file name/s with .dart extension for running test, 
+        if name is other than `widget_test.dart`''',
         type=str,
         nargs='+',
         default=['widget_test.dart'],
@@ -85,6 +90,14 @@ if __name__ == '__main__':
         print(r'Test File Path:{}\test'.format(args.path))
 
     if checkPlatform == 'Windows':
-        run_flutter_tests_win(path=args.path, test_file=args.file, debug=args.debug)
+        run_flutter_tests_win(
+            path=args.path,
+            test_file=args.file,
+            debug=args.debug
+        )
     else:
-        run_flutter_tests_linux(path=args.path, test_file=args.file, debug=args.debug)
+        run_flutter_tests_linux(
+            path=args.path,
+            test_file=args.file,
+            debug=args.debug
+        )
